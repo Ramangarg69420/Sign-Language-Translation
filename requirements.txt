@@ -6,5 +6,4 @@ keras
 numpy
 pandas
 gtts
-pyaudio
 moviepy
