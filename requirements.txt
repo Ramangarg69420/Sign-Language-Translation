@@ -1,8 +1,8 @@
 streamlit
-opencv-python
 mediapipe
 keras
 numpy
 pandas
 gtts
 streamlit-webrtc
+opencv-python-headless
