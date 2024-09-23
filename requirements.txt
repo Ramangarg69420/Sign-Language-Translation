@@ -1,17 +1,10 @@
-
-import streamlit as st
-from streamlit_webrtc import webrtc_streamer
-import av
-import cv2
-import threading
-import numpy as np
-import mediapipe as mp
-from keras.models import load_model
-import os
-import speech_recognition as sr
-import pyaudio
-import wave
-from moviepy.editor import VideoFileClip, concatenate_videoclips
-import pandas as pd
-import time
-from gtts import gTTS
+streamlit
+streamlit-webrtc
+opencv-python-headless
+mediapipe
+keras
+numpy
+pandas
+gtts
+pyaudio
+moviepy
