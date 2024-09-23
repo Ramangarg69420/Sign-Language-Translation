@@ -2,7 +2,8 @@
 Project Overview
 This project is designed to facilitate communication between individuals who use sign language and those who do not. It employs a combination of machine learning, computer vision, and audio processing to convert sign language gestures into text and vice versa. The application aims to improve accessibility and enhance understanding in conversations involving sign language.
 
-Key Features
+Key Features 
+
 Sign to Text Conversion: Users can perform sign language gestures using a webcam, which are then interpreted and displayed as text in real-time.
 
 Text to Sign Language Conversion: Users can input text, which will trigger a visual representation of the corresponding sign language gestures through video clips.
@@ -12,10 +13,15 @@ Voice Recognition: The application supports voice input, allowing users to speak
 User-Friendly Interface: The app features an intuitive interface that guides users through the translation process, making it accessible to individuals of all ages and technical backgrounds.
 
 Technologies Used
+
 Python: The primary programming language used for developing the application.
+
 OpenCV: For real-time video processing and gesture recognition.
+
 Mediapipe: A framework for building multimodal applied machine learning pipelines, used for hand tracking and gesture recognition.
+
 Keras: A deep learning API for building and training the sign language recognition model.
+
 Streamlit: A library for creating web applications in Python, providing a seamless user experience.
 MoviePy: For video processing and concatenation of sign language gesture videos.
 Getting Started
