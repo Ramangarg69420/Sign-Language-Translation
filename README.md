@@ -34,19 +34,19 @@ Clone the repository:
 
 1. Copy code
 
-git clone https://github.com/Ramangarg69420/Sign-Language-Translation.git
+    git clone https://github.com/Ramangarg69420/Sign-Language-Translation.git
 
 2. Navigate to the project directory:
 
-cd Sign-Language-Translation
+    cd Sign-Language-Translation
 
 3. Install the required dependencies:
 
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
 4. Run the application:
 
-streamlit run app.py
+    streamlit run app.py
 
 Future Enhancements
 Multi-language Support: Extend the application to include multiple sign languages.
