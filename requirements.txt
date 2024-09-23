@@ -9,3 +9,4 @@ gtts
 moviepy
 tensorflow
 speechrecognition
+pyaudio
