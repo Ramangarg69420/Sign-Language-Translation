@@ -4,7 +4,7 @@ This project is designed to facilitate communication between individuals who use
 
 Key Features 
 
-Sign to Text Conversion: Users can perform sign language gestures using a webcam, which are then interpreted and displayed as text in real-time.
+Sign-to-Text Conversion: Users can perform sign language gestures using a webcam, which are then interpreted and displayed as text in real-time.
 
 Text to Sign Language Conversion: Users can input text, which will trigger a visual representation of the corresponding sign language gestures through video clips.
 
@@ -23,30 +23,31 @@ Mediapipe: A framework for building multimodal applied machine learning pipeline
 Keras: A deep learning API for building and training the sign language recognition model.
 
 Streamlit: A library for creating web applications in Python, providing a seamless user experience.
+
 MoviePy: For video processing and concatenation of sign language gesture videos.
+
 Getting Started
+
 To set up the project locally, follow these steps:
 
 Clone the repository:
 
-bash
-Copy code
+1. Copy code
+
 git clone https://github.com/Ramangarg69420/Sign-Language-Translation.git
-Navigate to the project directory:
 
-bash
-Copy code
+2. Navigate to the project directory:
+
 cd Sign-Language-Translation
-Install the required dependencies:
 
-bash
-Copy code
+3. Install the required dependencies:
+
 pip install -r requirements.txt
-Run the application:
 
-bash
-Copy code
+4. Run the application:
+
 streamlit run app.py
+
 Future Enhancements
 Multi-language Support: Extend the application to include multiple sign languages.
 Mobile App Development: Create a mobile version of the application for broader accessibility.
