@@ -6,7 +6,6 @@ keras
 numpy
 pandas
 gtts
-moviepy
-tensorflow
-speechrecognition
 pyaudio
+speechrecognition
+moviepy
