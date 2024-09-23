@@ -5,3 +5,4 @@ keras
 numpy
 pandas
 gtts
+streamlit-webrtc
