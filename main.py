@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[4]:
 
 
 import streamlit as st
 from streamlit_webrtc import webrtc_streamer
 import av
-import cv2
+import cv2  # This will now use the headless version
 import threading
 import numpy as np
 import mediapipe as mp
@@ -232,10 +232,25 @@ elif option == "Sign to Text":
 
             drawing.draw_landmarks(frm, res.left_hand_landmarks, hands.HAND_CONNECTIONS)
             drawing.draw_landmarks(frm, res.right_hand_landmarks, hands.HAND_CONNECTIONS)
-
             return av.VideoFrame.from_ndarray(frm, format="bgr24")
 
-    webrtc_streamer(key="example", video_transformer_factory=Mooddetector)
+    detector = Mooddetector()
+    webrtc_streamer(key="example", video_frame_callback=detector.recv)
+
+    if st.button("Open Recognized Sentence File"):
+        detector.open_file()
+    
+    if st.button("Listen Recognized Sentence"):
+        detector.convert_text_to_speech()  # Generate audio and save to file
+      
+        
+        
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
