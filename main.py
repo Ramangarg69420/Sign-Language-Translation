@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 import streamlit as st
@@ -14,7 +14,7 @@ import mediapipe as mp
 from keras.models import load_model
 import os
 import speech_recognition as sr
-import pyaudio
+import sounddevice as sd
 import wave
 from moviepy.editor import VideoFileClip, concatenate_videoclips
 import pandas as pd
@@ -22,7 +22,7 @@ import time
 from gtts import gTTS
 
 # Load the Excel file
-excel_path = "C:/Users/Raman/Dropbox/PC/Downloads/signlanguagedataset.xlsx"
+excel_path = "C:/Users/Raman/OneDrive/Desktop/Signlanguage/signlanguagedataset.xlsx"
 df = pd.read_excel(excel_path)
 
 # Create the dictionary that maps words to video files
@@ -70,29 +70,24 @@ def display_concatenated_video(words):
     else:
         st.write("No signs available for the given words.")
 
-# Function to record audio
+# Function to record audio using sounddevice
 def record_audio(filename, duration=5, fs=44100):
-    p = pyaudio.PyAudio()
-    stream = p.open(format=pyaudio.paInt16,
-                    channels=1,
-                    rate=fs,
-                    input=True,
-                    frames_per_buffer=1024)
     st.info("Recording...")
-    frames = []
-    for _ in range(0, int(fs / 1024 * duration)):
-        data = stream.read(1024)
-        frames.append(data)
-    st.success("Recording complete")
-    stream.stop_stream()
-    stream.close()
-    p.terminate()
-    wf = wave.open(filename, 'wb')
-    wf.setnchannels(1)
-    wf.setsampwidth(p.get_sample_size(pyaudio.paInt16))
-    wf.setframerate(fs)
-    wf.writeframes(b''.join(frames))
-    wf.close()
+
+    try:
+        recording = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype='int16')
+        sd.wait()  # Wait until the recording is finished
+        st.success("Recording complete")
+
+        # Save the recorded audio to a file
+        with wave.open(filename, 'wb') as wf:
+            wf.setnchannels(1)
+            wf.setsampwidth(2)  # 16-bit audio
+            wf.setframerate(fs)
+            wf.writeframes(recording.tobytes())
+
+    except Exception as e:
+        st.error(f"Error during recording: {e}")
 
 # Function to recognize speech from the recorded audio file
 def recognize_speech_from_file(audio_file):
@@ -152,8 +147,6 @@ if option == "Text to Sign":
             words = user_input.lower().split()
             display_concatenated_video(words)
     
-    
-
 elif option == "Sign to Text":
     st.header("Sign to Text Conversion")
     st.write("Use your camera to display sign language and convert it to text.")
@@ -172,7 +165,7 @@ elif option == "Sign to Text":
             # Automatically opening the recognized sentence file
             try:
                 if os.name == 'nt':
-                    os.startfile(self, output_file)
+                    os.startfile(self.output_file)
             except Exception as e:
                 st.error(f"Error opening file: {e}")
 
@@ -241,6 +234,7 @@ elif option == "Sign to Text":
             drawing.draw_landmarks(frm, res.right_hand_landmarks, hands.HAND_CONNECTIONS)
 
             return av.VideoFrame.from_ndarray(frm, format="bgr24")
+
     webrtc_streamer(key="example", video_transformer_factory=Mooddetector)
 
 
