@@ -6,7 +6,6 @@ numpy
 mediapipe
 keras
 speechrecognition
-pyaudio
 moviepy
 pandas
 gtts
