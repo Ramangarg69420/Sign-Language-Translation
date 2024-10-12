@@ -1,2 +1,2 @@
 #!/bin/bash
-pkill -f main.py
+service httpd stop
