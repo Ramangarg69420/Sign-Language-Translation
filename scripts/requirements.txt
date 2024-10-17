@@ -1,0 +1,12 @@
+streamlit
+streamlit-webrtc
+av
+opencv-python-headless
+numpy
+mediapipe
+keras
+speechrecognition
+pyaudio
+moviepy
+pandas
+gtts
